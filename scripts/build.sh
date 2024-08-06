@@ -15,7 +15,7 @@ script_build_image () {
   export DOCKER_BUILDKIT=0
 
   # ejecutando proceso
-  docker build -t ${dockerhubUser}/${appName}:latest -f docker/Dockerfile.${img} .
+  docker build -t ${dockerhubUser}/${appName}:${img} -f docker/Dockerfile.${img} .
 }
 
 "$@"

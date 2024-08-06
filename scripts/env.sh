@@ -2,7 +2,7 @@
 
 script_env_global () {
   # variables globales
-  project="titan"
+  project="falcon"
   repoType="microservice"
   service="user"
   env="dev"
@@ -17,6 +17,16 @@ script_env_global () {
   # variables docker
   dockerhubUser="punkerside"
   export dockerhubUser=${dockerhubUser}
+}
+
+script_env_docker () {
+  docker_uid=$(id -u)
+  docker_gid=$(id -g)
+  docker_user=$(whoami)
+  export docker_uid="${docker_uid}"
+  export docker_gid="${docker_gid}"
+  export docker_user="${docker_user}"
+  echo "${docker_user}:x:${docker_uid}:${docker_gid}::/app:/sbin/nologin" > passwd
 }
 
 "$@"
